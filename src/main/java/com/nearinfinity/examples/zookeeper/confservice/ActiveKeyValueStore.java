@@ -2,15 +2,12 @@ package com.nearinfinity.examples.zookeeper.confservice;
 
 import java.nio.charset.Charset;
 
-import org.apache.zookeeper.CreateMode;
-import org.apache.zookeeper.KeeperException;
-import org.apache.zookeeper.Watcher;
-import org.apache.zookeeper.ZooDefs;
+import org.apache.zookeeper.*;
 import org.apache.zookeeper.data.Stat;
 
 import com.nearinfinity.examples.zookeeper.util.ConnectionWatcher;
 
-public class ActiveKeyValueStore extends ConnectionWatcher {
+public class ActiveKeyValueStore extends ConnectionWatcher  {
 
     private static final Charset CHARSET = Charset.forName("UTF-8");
 
@@ -29,5 +26,9 @@ public class ActiveKeyValueStore extends ConnectionWatcher {
         return new String(data, CHARSET);
     }
 
+
+    public void read(String path, Watcher watcher, AsyncCallback.DataCallback callback, Object ctx) {
+        zk.getData(path, watcher, callback, ctx);
+    }
 
 }

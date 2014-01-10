@@ -20,6 +20,7 @@ public class ConfigUpdater {
 
     public void run() throws InterruptedException, KeeperException {
         //noinspection InfiniteLoopStatement
+
         while (true) {
             String value = _random.nextInt(100) + "";
             _store.write(PATH, value);

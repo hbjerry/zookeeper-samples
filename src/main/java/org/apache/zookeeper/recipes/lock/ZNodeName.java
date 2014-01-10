@@ -24,7 +24,7 @@ import org.apache.log4j.Logger;
  * and can be sorted in order
  *
  */
-class ZNodeName implements Comparable<ZNodeName> {
+public class ZNodeName implements Comparable<ZNodeName> {
     private final String name;
     private String prefix;
     private int sequence = -1;
@@ -62,7 +62,6 @@ class ZNodeName implements Comparable<ZNodeName> {
         if (o == null || getClass() != o.getClass()) return false;
 
         ZNodeName sequence = (ZNodeName) o;
-
         if (!name.equals(sequence.name)) return false;
 
         return true;
@@ -74,6 +73,7 @@ class ZNodeName implements Comparable<ZNodeName> {
     }
 
     public int compareTo(ZNodeName that) {
+
         int answer = this.prefix.compareTo(that.prefix);
         if (answer == 0) {
             int s1 = this.sequence;
